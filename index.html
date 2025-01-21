@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@700&display=swap"> <!-- Vogue-like font -->
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,30 +14,46 @@
       background-color: #f8f9fa;
     }
 
-    header {
-      background: #dcd3ff;
-      color: #4d4d4d;
-      padding: 1rem 0;
-      text-align: center;
+    header, #bio h2, #skills h2, #achievements h2, footer h2 {
+      font-family: 'Vollkorn', serif; /* Vogue-like font */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    header h1 {
-      margin: 0;
+    header {
+      background: #dce6f1;
+      color: #4d4d4d;
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    nav {
+      background: #dce6f1;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      transition: top 0.3s;
     }
 
     nav ul {
       list-style: none;
       padding: 0;
+      margin: 0;
+      display: flex;
     }
 
     nav ul li {
-      display: inline;
       margin: 0 10px;
     }
 
     nav ul li a {
       color: #4d4d4d;
       text-decoration: none;
+      font-weight: bold;
     }
 
     main {
@@ -45,103 +62,252 @@
 
     section {
       margin-bottom: 20px;
-      background-color: #e6f5e1;
-      padding: 10px;
+      background-color: #f7f4e9;
+      padding: 20px;
       border-radius: 8px;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
+    .flip-card {
+      background-color: transparent;
+      width: 250px;
+      height: 200px;
+      perspective: 1000px;
+      margin: 10px;
+      display: inline-block;
+      vertical-align: top;
     }
 
-    form label {
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateX(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .flip-card-front {
+      background: #dce6f1;
+      color: #4d4d4d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .flip-card-back {
+      background: #fff;
+      color: #4d4d4d;
+      transform: rotateX(180deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+
+    footer {
+      text-align: center;
+      background: #dce6f1;
+      color: #4d4d4d;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: #4d4d4d;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer form label, footer form input, footer form textarea, footer form button {
+      width: 100%;
+      max-width: 400px;
       margin: 5px 0;
     }
 
-    form input, form textarea {
+    footer form input, footer form textarea {
       padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #cfd8dc;
+      border: 1px solid #ccc;
       border-radius: 4px;
     }
 
-    form button {
+    footer form button {
       padding: 10px;
-      background: #ffdfd3;
-      color: #4d4d4d;
+      background: #4d4d4d;
+      color: #fff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
     }
 
-    form button:hover {
-      background: #ffb6b9;
+    footer form button:hover {
+      background: #333;
     }
 
-    footer {
-      text-align: center;
-      background: #dcd3ff;
-      color: #4d4d4d;
-      padding: 10px 0;
-      position: absolute;
-      width: 100%;
-      bottom: 0;
+    @media (max-width: 768px) {
+      .flip-card {
+        width: 100%;
+        height: auto;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      footer form label, footer form input, footer form textarea, footer form button {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>My Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    Portfolio
   </header>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
   <main>
-    <section id="about">
+    <section id="bio">
       <h2>About Me</h2>
-      <p>Hello! I'm Nadira Fatima Sireen Sultana.</p>
+      <p>Hello! I'm Nadira Fatima Sireen Sultana, I'm a BE CSE (IOT) 2nd-year student studying at Nawab Shah Alam Khan College of Engineering and Technology. I pursued my diploma in computer science as well. I have a great interest in web development, designing, and coding.</p>
     </section>
     <section id="skills">
       <h2>Skills</h2>
-      <ul>
-        <li>Skill 1</li>
-        <li>Skill 2</li>
-        <li>Skill 3</li>
-        <!-- Add more skills as needed -->
-      </ul>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            JAVA
+          </div>
+          <div class="flip-card-back">
+            Java is a high-level, object-oriented programming language widely used for building platform-independent applications. Known for its "write once, run anywhere" capability, Java is commonly used in web development, mobile apps, enterprise systems, and more due to its robustness and versatility.
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            PYTHON
+          </div>
+          <div class="flip-card-back">
+            Python is a high-level, interpreted programming language known for its simplicity and readability. It is widely used for web development, data analysis, machine learning, automation, and more, offering extensive libraries and strong community support.
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            C++
+          </div>
+          <div class="flip-card-back">
+            C++ is a high-performance, object-oriented programming language that extends C with features like classes and polymorphism. It is widely used for system software, game development, and applications requiring efficient resource management.
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            HTML & CSS
+          </div>
+          <div class="flip-card-back">
+            HTML (Hypertext Markup Language) and CSS (Cascading Style Sheets) are the foundational technologies for creating and designing web pages. HTML structures the content, while CSS styles it, making the web more visually appealing and accessible.
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            JavaScript
+          </div>
+          <div class="flip-card-back">
+            JavaScript is a versatile, high-level programming language that enables interactive web pages. It is widely used for front-end development, server-side applications, game development, and more, bringing dynamic features to websites and applications.
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="projects">
-      <h2>Projects</h2>
-      <!-- Add your projects here -->
-    </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <form id="contact-form">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            Achievement 1
+          </div>
+          <div class="flip-card-back">
+            Details about Achievement 1.
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            Achievement 2
+          </div>
+          <div class="flip-card-back">
+            Details about Achievement 2.
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            Achievement 3
+          </div>
+          <div class="flip-card-back">
+            Details about Achievement 3.
+          </div>
+        </div>
+      </div>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+  <footer id="contact">
+    <h2>Contact Me</h2>
+    <p>Feel free to connect with me!</p>
+    <div>
+      <a href="https://www.linkedin.com/in/sireen-sultana-4a3014301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a> |
+      <a href="https://github.com/sireensultana22" target="_blank">GitHub</a>
+    </div>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your name">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Your email">
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" placeholder="Your message" rows="4"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
   </footer>
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      alert('Thank you for your message!');
-    });
-  </script>
 </body>
 </html>
 
